@@ -53,6 +53,27 @@ export const Dashboard = () => {
                 </div>
             </header>
 
+      <div className="kpi-grid">
+        <div className="kpi-card">
+          <p className="kpi-label">Apuestas Totales</p>
+          <p className="kpi-value">{apuestasData[0].value + apuestasData[1].value}</p>
+        </div>
+        <div className="kpi-card">
+          <p className="kpi-label">Tasa de Éxito</p>
+          <p className="kpi-value">
+            {Math.round((apuestasData[0].value / (apuestasData[0].value + apuestasData[1].value)) * 100)}%
+          </p>
+        </div>
+        <div className="kpi-card">
+          <p className="kpi-label">Caracol Estrella</p>
+          <p className="kpi-value">Turbo</p>
+        </div>
+        <div className="kpi-card">
+          <p className="kpi-label">Carreras del Día</p>
+          <p className="kpi-value">6</p>
+        </div>
+      </div>
+
             <div className="charts-grid">
                 <div className="chart-card">
                     <h3>Historial de Apuestas</h3>

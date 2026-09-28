@@ -21,7 +21,22 @@ export const SnailPayModal = ({ isOpen, onClose, onSuccess }: SnailPayModalProps
   if (!isOpen) return null;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    if (name === 'expiryDate') {
+      let formattedValue = value.replace(/\D/g, '');
+      if (formattedValue.length >= 3) {
+        formattedValue = `${formattedValue.slice(0, 2)}/${formattedValue.slice(2, 4)}`;
+      }
+      setFormData({ ...formData, [name]: formattedValue });
+      
+    } else if (name === 'cardNumber' || name === 'cvv') {
+      const onlyNumbers = value.replace(/\D/g, '');
+      setFormData({ ...formData, [name]: onlyNumbers });
+      
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -97,7 +112,7 @@ export const SnailPayModal = ({ isOpen, onClose, onSuccess }: SnailPayModalProps
             </div>
             <div className="form-group" style={{ flex: 1 }}>
               <label>CVV</label>
-              <input type="text" name="cvv" maxLength={4} value={formData.cvv} onChange={handleChange} required />
+              <input type="text" name="cvv" maxLength={3} value={formData.cvv} onChange={handleChange} required />
             </div>
           </div>
           

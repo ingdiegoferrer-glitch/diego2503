@@ -24,7 +24,7 @@ app.post('/api/pay', (req, res) => {
         return res.status(500).json({
             ...baseResponse,
             status: 'error',
-            status_detail: 'Falla del Sistema SnailPay: Internal Server Error'
+            status_detail: 'Falla del Sistema SnailPay: Intentelo mas tarde'
         });
     }
 
