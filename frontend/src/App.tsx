@@ -3,6 +3,7 @@ import { authStorage } from './services/authStorage';
 import type { ReactNode } from 'react';
 import { Register } from './components/Register';
 import { Login } from './components/Login';
+import { Dashboard } from './components/Dashboard';
 import './App.css';
 
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
@@ -15,7 +16,6 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   return children;
 };
 
-const Dashboard = () => <div><h2>Dashboard de Apuestas</h2></div>;
 
 function App() {
   return (
